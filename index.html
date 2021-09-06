@@ -4,7 +4,7 @@
     Profesor: Nicolas Martini
     Tutor: German Cuevas
     Alumna: Victoria Yen
-    Entrega: N°5  
+    Entrega: N°6 
 -->
 
 <!DOCTYPE html>
@@ -12,19 +12,30 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>We love cakes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&family=Kalam:wght@300&family=Yellowtail&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+    
 </head>
 
 <body>
-    <h1>Primer prototipo simulador interactivo</h1>  
+    <h1 class="bounce">¡BIENVENIDO PASTELERO CURIOSO!</h1>  
     <h2>Arme su propia torta personalizada</h2>
-    <p>El Usuario deberá ingresar en base a las opciones, los ingredientes de diferentes categorías,
-       el simulador determinará dependiendo de los datos recolectados, el tipo de torta que se personalizó,
-       y si es una torta tradicional, vegana, gluten free o sin lactosa.
-    </p>  
-
+    <div class="contenedor">
+        <p>El pastelero deberá ingresar en base a las opciones, los ingredientes de diferentes categorías,
+            el simulador determinará dependiendo de los datos recolectados, el tipo de torta que se personalizó,
+            y si es una torta<span class="italic"> TRADICIONAL </span>(que contiene ingredientes de origen animal),<span class="italic">VEGANA</span> (que no contiene ningún ingrediente de origen animal), <span class="italic">LIBRE DE GLUTEN</span> (productos sin TACC) o <span class="italic">SIN LACTOSA</span>.
+        </p> 
+    </div>
+    
     <script src="archivoyen.js"></script>
-
+    <button onclick="simulador()" class="boton">COMENCEMOS!</button>    
 </body>
+<footer class="footer">
+    <div>CODER HOUSE - JAVASCRIPT</div>
+    <div>Victoria Yen</div>
+</footer>

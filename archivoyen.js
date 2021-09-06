@@ -4,116 +4,113 @@
     Profesor: Nicolas Martini
     Tutor: German Cuevas
     Alumna: Victoria Yen
-    Entrega: N°5  
+    Entrega: N°6  
 */
+  
 
+function simulador() {
 
-//Prototipo a desarrollar utilizando if, if else y else (idea general de como funcionaria el simulador interactivo muy muy basico)
+class Cake {
+    base;
+    ingredienteHumedo;
+    ingrediente1;
+    relleno;
+    cobertura;
+    topping;
 
-var mensaje1 = prompt ("Hola pastelero! Ingrese su ingrediente base: harina o maicena");
-var  base1 = "harina"
-var base2 = "maicena"
+    // Desafio Arrays
+    posiblesValores = {
+        bases: ["harina", "maicena", "harina de garbanzo", "harina de arroz"],
+        ingredienteHumedos: ["leche animal", "leche vegetal"],
+        ingredientes: ["banana", "huevo"],
+        relleno: ["fruta", "mousse"],
+        cobertura: ["buttercream vegetal", "crema"],
+        
+    };
 
-var mensaje2 = prompt ("Hora de elegir el sabor: vainilla o chocolate");
-var  sabor1 = "vainilla"
-var sabor2 = "chocolate"
+    getPosiblesBases(){
+        let texto = "";
+      
+      const values = this.posiblesValores.bases;
+      
+      for(let i = 0; i < values.length; i++){
+        texto += values[i] + ", ";
+      }
+       return texto;
+    }
 
-var mensaje3 = prompt ("Ahora ingrese el siguiente ingrediente: huevo o banana");
-var  ingr1 = "huevo"
-var ingr2 = "banana"
+    getTipoDeCake(){
+        let esLibreDeGluten = true;
+        let esVegana = true;
+        let esLibreDeLactosa = true;
+        
 
-var mensaje4 = prompt ("Seleccione el siguiente ingrediente: leche o leche vegetal");
-var  ingr3 = "leche"
-var ingr4 = "leche vegetal"
+        if (this.base === "harina") {
+            esLibreDeGluten = false;
+        }
 
-var mensaje5= prompt ("Ahora elegimos el relleno: fruta o mousse");
-var  fill1 = "fruta"
-var fill2 = "mousse"
+        if (this.ingredienteHumedo === "leche animal") {
+            esVegana = false;
+            esLibreDeLactosa = false;
+        }
 
-var mensaje6 = prompt ("Elija una cobertura: buttercream vegetal o crema");
-var  frost1 = "buttercream vegetal"
-var frost2 = "crema"
+        if(this.ingrediente1 === "huevo") {
+            esVegana = false;
+        }
 
-var mensaje7 = prompt ("Y por último, ingrese el topping: fruta o sprinkles");
-var  top1 = "fruta"
-var top2 = "sprinkles"
+        if (this.relleno === "mousse") {
+            esVegana = false;
+        }
 
+        if (this.cobertura === "crema") {
+            esVegana = false;
+        }
 
+        let mensaje = "La torta es ";
+        if (esVegana) {
+            mensaje += " vegana";
+        } else {
+            mensaje += " tradicional";
+        }
 
+        if (esLibreDeGluten) {
+            mensaje += ", libre de gluten ";
+        } else {
+            mensaje += ", no es libre de gluten ";
+        }
 
-if (mensaje1 == "maicena"){
+        if (esLibreDeLactosa) {
+            mensaje += " y libre de lactosa ";
+        } else {mensaje
+            mensaje += " y no es libre de lactosa ";
+        }
 
-    alert ("Felicidades pastelero! Ha logrado una torta libre de gluten") ; 
+        alert (mensaje);
+
+    }
+
 }
 
-else if (mensaje3 == "banana" && mensaje4 == "leche vegetal" && mensaje5 == "fruta" && mensaje6 == "buttercream vegetal"){
-    
+const cake = new Cake();
 
-    alert ("Felicidades pastelero! Ha logrado una torta vegana y sin lactosa!") ;
+const posiblesBasesString = cake.getPosiblesBases();
+
+const basePrompt = prompt("Ingrese la base que puede ser: "+posiblesBasesString); 
+const ingredienteHumedoPrompt = prompt("Ingrese el ingrediente humedo que puede ser leche vegetal o animal"); 
+const ingredientePrompt = prompt("Ingrese el primer ingrediente que puede ser banana o huevo"); 
+const rellenoPrompt = prompt("Elija un relleno que puede ser fruta o mousse");
+const coberturaPrompt = prompt("Por ultimo la cobertura que puede ser buttercream vegetal o crema");
+
+
+cake.base = basePrompt;
+cake.ingredienteHumedo = ingredienteHumedoPrompt;
+cake.ingrediente1 = ingredientePrompt;
+cake.relleno = rellenoPrompt;
+cake.cobertura = coberturaPrompt
+
+const tipoDeTorta = cake.getTipoDeCake();
+
 }
-
-else if (mensaje3 == "huevo" && mensaje4 == "leche" && mensaje5 == "mousse" && mensaje6 == "crema"){
-    
-
-    alert ("Felicidades pastelero! Ha logrado una torta clasica") ;
-}
-
-else  {
-
-   alert ("Debe elegir primero los ingredientes") ;
-}
-
-
-
-// Concepto Prototipo 2 utilizando switch (a desarrollar)
-
-let entrada = prompt ("Ingrese que tipo de ingredientes quiere usar");
-switch (entrada) {
-
-    case "harina" :
-        alert ("Ingrediente CON gluten") ;
-        break;
-    case "maicena" :
-         alert ("Ingrediente SIN gluten") ; 
-        break;    
-    case "huevo" :
-         alert ("Ingrediente origen animal") ; 
-        break;
-    case "banana" :
-         alert ("Ingrediente vegano") ;
-        break;
-    case "leche" :
-         alert ("Ingrediente origen animal") ;
-        break;  
-    case "leche vegetal" :
-         alert ("Ingrediente vegano") ;
-        break;        
-    default:
-        alert ("El ingrediente que ingresó no se utiliza para la elaboración de tortas D:");
-}
-
-// Incorporar OBJETOS
-
-
-let tortaVegana = {
-    base : "harina" || "maicena",
-    sabor: "chocolate" || "vainilla" ,
-    ingrediente1: "banana" ,
-    ingrediente2: "leche vegetal" , 
-    relleno: "fruta" , 
-    cobertura: "buttercream vegetal" ,
-    topping: "fruta" || "sprinkles"
-}
-
-let vegano = confirm ("Querés saber como hacer una torta vegana?");
-
-if (vegano) {
-    alert("Para que una torta sea vegana, el relleno debe ser de origen no animal. Por ejemplo: "+tortaVegana.relleno);
-    alert("Además, una torta vegana reemplaza el huevo por "+tortaVegana.ingrediente1);
-
-}else {
-    alert ("Aprender nunca está de más");
-}   
 
 
 

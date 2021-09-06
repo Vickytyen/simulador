@@ -1,13 +1,183 @@
 /*
-    CODERHOUSE
-    Curso: Javascript
-    Profesor: Nicolas Martini
-    Tutor: German Cuevas
-    Alumna: Victoria Yen
-    Entrega: N°5  
+CODERHOUSE
+Curso: Javascript
+Profesor: Nicolas Martini
+Tutor: German Cuevas
+Alumna: Victoria Yen
+Entrega: N°6  
 */
 
 body {
-    background-image: url("fondo.jpg");
-    background-repeat:round;
+        background-image: url("img/sprinkles.jpg");
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 }
+
+h1 {
+        font-family: Concert One;
+        color: rgb(255, 145, 222);
+        font-size: 4rem ;
+       
+}
+
+h2 {
+        font-family: Concert One;
+        color: rgb(243, 158, 79);
+        font-size: 3rem ;
+        
+        
+}
+
+.contenedor {
+        background-color: rgb(161, 252, 184); 
+        display: flex;  
+        flex-direction: column;    
+        align-items: center;
+        width: 60%;
+        
+}
+
+p {
+        font-family: Yellowtail;
+        color: rgb(255, 157, 44);
+        font-size: 2rem ;
+        width: 85%;        
+}
+
+.italic {
+        font-style: italic ;
+        font-family:Concert One ;
+}
+
+.boton {
+        padding: 10px;
+        font-family: Concert One;
+        color: lightcoral;
+        font-size: 1rem;
+        margin-top: 2%;
+}
+
+footer {
+        background-color: rgb(242, 170, 252);
+        font-family: Concert One;
+        color:mediumpurple;
+        width: 80%;
+        display: block;
+        text-align: center;
+        position: absolute;
+        bottom: 2%;
+        
+}
+
+.bounce {
+        -webkit-animation: bounce-top 0.9s both;
+        animation: bounce-top 0.9s both;
+}
+/*ANIMACION*/
+@-webkit-keyframes bounce-top {
+        0% {
+                -webkit-transform: translateY(-45px);
+                transform: translateY(-45px);
+                -webkit-animation-timing-function: ease-in;
+                animation-timing-function: ease-in;
+                opacity: 1;
+        }
+        24% {
+                opacity: 1;
+        }
+        40% {
+                -webkit-transform: translateY(-24px);
+                transform: translateY(-24px);
+                -webkit-animation-timing-function: ease-in;
+                animation-timing-function: ease-in;
+        }
+        65% {
+                -webkit-transform: translateY(-12px);
+                transform: translateY(-12px);
+                -webkit-animation-timing-function: ease-in;
+                animation-timing-function: ease-in;
+        }
+        82% {
+                -webkit-transform: translateY(-6px);
+                transform: translateY(-6px);
+                -webkit-animation-timing-function: ease-in;
+                animation-timing-function: ease-in;
+        }
+        93% {
+                -webkit-transform: translateY(-4px);
+                transform: translateY(-4px);
+                -webkit-animation-timing-function: ease-in;
+                animation-timing-function: ease-in;
+        }
+        25%,
+        55%,
+        75%,
+        87% {
+                -webkit-transform: translateY(0px);
+                transform: translateY(0px);
+                -webkit-animation-timing-function: ease-out;
+                animation-timing-function: ease-out;
+        }
+        100% {
+                -webkit-transform: translateY(0px);
+                transform: translateY(0px);
+                -webkit-animation-timing-function: ease-out;
+                animation-timing-function: ease-out;
+                opacity: 1;
+        }
+}
+@keyframes bounce-top {
+        0% {
+                -webkit-transform: translateY(-45px);
+                transform: translateY(-45px);
+                -webkit-animation-timing-function: ease-in;
+                animation-timing-function: ease-in;
+                opacity: 1;
+        }
+        24% {
+                opacity: 1;
+        }
+        40% {
+                -webkit-transform: translateY(-24px);
+                transform: translateY(-24px);
+                -webkit-animation-timing-function: ease-in;
+                animation-timing-function: ease-in;
+        }
+        65% {
+                -webkit-transform: translateY(-12px);
+                transform: translateY(-12px);
+                -webkit-animation-timing-function: ease-in;
+                animation-timing-function: ease-in;
+        }
+        82% {
+                -webkit-transform: translateY(-6px);
+                transform: translateY(-6px);
+                -webkit-animation-timing-function: ease-in;
+                animation-timing-function: ease-in;
+        }
+        93% {
+                -webkit-transform: translateY(-4px);
+                transform: translateY(-4px);
+                -webkit-animation-timing-function: ease-in;
+                animation-timing-function: ease-in;
+        }
+        25%,
+        55%,
+        75%,
+        87% {
+                -webkit-transform: translateY(0px);
+                transform: translateY(0px);
+                -webkit-animation-timing-function: ease-out;
+                animation-timing-function: ease-out;
+        }
+        100% {
+                -webkit-transform: translateY(0px);
+                transform: translateY(0px);
+                -webkit-animation-timing-function: ease-out;
+                animation-timing-function: ease-out;
+                opacity: 1;
+        }
+}
+/*FIN ANIMACION*/
