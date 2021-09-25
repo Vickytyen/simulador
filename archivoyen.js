@@ -4,113 +4,73 @@
     Profesor: Nicolas Martini
     Tutor: German Cuevas
     Alumna: Victoria Yen
-    Entrega: N°6  
+    Entrega: N° 10 
 */
   
+//Hice una lista anidada de objetos para que cuando seleccione "categorias" recorra el array de la lista de "ingredientes"
+let categorias = ["Harinas con gluten","Harinas sin gluten", "Ingrediente humedo", "Ingrediente humedo vegano", "Leche animal con lactosa", "Leche vegana sin lactosa", 
+"Relleno tradicional", "Relleno vegetal sin lactosa","cobertura tradicional", "cobertura vegana sin lactosa"]
+let ingredientes = ["Harina de trigo", "Maicena", "Harina de arroz" , "Harina de avena", "Harina de Almendras", "Huevo", "Banana", "chiaegg", "Pasta de Garbanzos",
+"Leche animal", "Leche de soja", "Leche de almendras", "Leche de castañas", "Leche de avellanas", "Leche de avena", "Mousse", "Buttercream", "Fruta", "Buttercream vegetal",
+"Crema", "Buttercream vegetal"];
 
-function simulador() {
+let lista1= document.getElementById("lista1")
+let lista2= document.getElementById("lista2")
 
-class Cake {
-    base;
-    ingredienteHumedo;
-    ingrediente1;
-    relleno;
-    cobertura;
-    topping;
+function recorrer (listas,valores) {
+    lista2.innerHTML=""
 
-    // Desafio Arrays
-    posiblesValores = {
-        bases: ["harina", "maicena", "harina de garbanzo", "harina de arroz"],
-        ingredienteHumedos: ["leche animal", "leche vegetal"],
-        ingredientes: ["banana", "huevo"],
-        relleno: ["fruta", "mousse"],
-        cobertura: ["buttercream vegetal", "crema"],
-        
-    };
-
-    getPosiblesBases(){
-        let texto = "";
-      
-      const values = this.posiblesValores.bases;
-      
-      for(let i = 0; i < values.length; i++){
-        texto += values[i] + ", ";
-      }
-       return texto;
+    for(let index of valores){
+        listas.innerHTML += `<option>$(index)</option>`
     }
-
-    getTipoDeCake(){
-        let esLibreDeGluten = true;
-        let esVegana = true;
-        let esLibreDeLactosa = true;
-        
-
-        if (this.base === "harina") {
-            esLibreDeGluten = false;
-        }
-
-        if (this.ingredienteHumedo === "leche animal") {
-            esVegana = false;
-            esLibreDeLactosa = false;
-        }
-
-        if(this.ingrediente1 === "huevo") {
-            esVegana = false;
-        }
-
-        if (this.relleno === "mousse") {
-            esVegana = false;
-        }
-
-        if (this.cobertura === "crema") {
-            esVegana = false;
-        }
-
-        let mensaje = "La torta es ";
-        if (esVegana) {
-            mensaje += " vegana";
-        } else {
-            mensaje += " tradicional";
-        }
-
-        if (esLibreDeGluten) {
-            mensaje += ", libre de gluten ";
-        } else {
-            mensaje += ", no es libre de gluten ";
-        }
-
-        if (esLibreDeLactosa) {
-            mensaje += " y libre de lactosa ";
-        } else {mensaje
-            mensaje += " y no es libre de lactosa ";
-        }
-
-        alert (mensaje);
-
-    }
-
 }
 
-const cake = new Cake();
-
-const posiblesBasesString = cake.getPosiblesBases();
-
-const basePrompt = prompt("Ingrese la base que puede ser: "+posiblesBasesString); 
-const ingredienteHumedoPrompt = prompt("Ingrese el ingrediente humedo que puede ser leche vegetal o animal"); 
-const ingredientePrompt = prompt("Ingrese el primer ingrediente que puede ser banana o huevo"); 
-const rellenoPrompt = prompt("Elija un relleno que puede ser fruta o mousse");
-const coberturaPrompt = prompt("Por ultimo la cobertura que puede ser buttercream vegetal o crema");
-
-
-cake.base = basePrompt;
-cake.ingredienteHumedo = ingredienteHumedoPrompt;
-cake.ingrediente1 = ingredientePrompt;
-cake.relleno = rellenoPrompt;
-cake.cobertura = coberturaPrompt
-
-const tipoDeTorta = cake.getTipoDeCake();
-
+function llenar() {
+    recorrer(lista1,categorias)    
 }
+
+
+//Peeeeroo... nada funciono xD
+
+llenar()
+lista1.addEventListener("change",(e )=> {
+    let dato= e.target.value
+
+    switch (dato) {
+        case "Harinas con gluten":
+            recorrer (lista2,ingredientes.slice(0))    
+            break;
+        case "Harinas sin gluten":
+            recorrer(lista2, ingredientes.slice(1,4))
+            break;
+        case "Ingrediente humedo":
+            recorrer(lista2, ingredientes.slice(4))
+            break;   
+        default:
+            break;
+    }
+}
+
+
+/* NO DARLE BOLA A ESTO
+const cakes = ["Tradicional","Vegana","Libre de Gluten","Sin Lactosa"]
+
+const cakelist = document.getElementById("cakeList");
+const selectcake = document.getElementById("selectCake");
+
+
+const fragment = document.createDocumentFragment()
+
+for (const cake of cakes){
+    const selectItem = document.createElement("option")
+    selectItem.setAttribute("value", cake.toLowerCase())
+    selectItem.textContent = cake
+    fragment.appendChild(selectItem)  
+}
+
+selectcake.appendChild(fragment);
+*/
+
 
 
 

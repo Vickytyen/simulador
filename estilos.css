@@ -4,7 +4,7 @@ Curso: Javascript
 Profesor: Nicolas Martini
 Tutor: German Cuevas
 Alumna: Victoria Yen
-Entrega: N°6  
+Entrega: N° 10
 */
 
 body {
@@ -57,7 +57,14 @@ p {
         color: lightcoral;
         font-size: 1rem;
         margin-top: 2%;
+        margin-bottom: 2%;
 }
+
+#selectCake {
+        font-size: 1.5rem;
+        font-family: Kalam;
+}
+
 
 footer {
         background-color: rgb(242, 170, 252);
@@ -66,7 +73,7 @@ footer {
         width: 80%;
         display: block;
         text-align: center;
-        position: absolute;
+        position: relative;
         bottom: 2%;
         
 }
@@ -75,6 +82,8 @@ footer {
         -webkit-animation: bounce-top 0.9s both;
         animation: bounce-top 0.9s both;
 }
+
+        
 /*ANIMACION*/
 @-webkit-keyframes bounce-top {
         0% {
