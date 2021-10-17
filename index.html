@@ -4,7 +4,7 @@
     Profesor: Nicolas Martini
     Tutor: German Cuevas
     Alumna: Victoria Yen
-    Entrega: N° 10
+    Entrega Final
 -->
 
 <!DOCTYPE html>
@@ -30,68 +30,63 @@
             el simulador determinará dependiendo de los datos recolectados, el tipo de torta que se personalizó,
             y si es una torta<span class="italic"> TRADICIONAL </span>, <span class="italic">VEGANA</span>, <span class="italic">LIBRE DE GLUTEN</span> o <span class="italic">SIN LACTOSA</span>.
         </p>
-        <form name ="myForm">
+        <!--AJAX POST-->
+        <form name= "cakesForm" onsubmit= "return false" >
             <fieldset>
                 <h2>DATOS DEL PASTELERO</h2>
                 <label for="nombreP" >Nombre del pastelero</label>
                 <input type="text" name="nombreP" id="nombreP"  placeholder ="Nombre"/>
                 <label for="nombreF">Nombre artístico pastelero</label>
-                <input type="text" name="nombreF" id="nombreF" placeholder="Ej: Super pastelera Vicky " />
+                <input type="text" name="nombreF" id="nombreF" placeholder="Ej: Super pastelera Vicky "/>
                 <label for="preferencias">Preferencias de pasteles</label>
                 <input type="text" name="preferencias" id="preferencias"  placeholder ="Tradicional, Vegano, Gluten Free, sin Lactosa" />
+                <div>
+                    <button onclick="guardar()"id="botonF">Guardar</button>
+                    <button onclick="reset()" id="botonR">Resetear</button>
+                </div>
+                <button onclick="cargarDatos()" id="boton">Cargar datos existentes</button>
+                <button onclick="borrarDatos()" id="boton">Borrar datos existentes</button>
+                
+                <!--AJAX -->  
+                <button id="load" class="botonJ">Cargar usuarios</button>
+                <div id="loader" class="loader"></div>
+                <ul id="list"></ul>
+                <div id="mensaje"></div>
             </fieldset>
-            <fieldset>
-                <h2>ELIJA LOS INGREDIENTES</h2>
-                <strong>HARINA con gluten</strong>
-                <input type="radio" name="harina" id="trigo" value="trigo">Harina de trigo
-                <input type="radio" name="harina" id="centeno" value="centeno">Harina de centeno
-                <input type="radio" name="harina" id="cebada" value="cebada">Harina de cebada
-                <strong>HARINA sin gluten</strong>
-                <input type="radio" name="harina" id="maicena" value="maicena">Maicena
-                <input type="radio" name="harina" id="arroz" value="arroz">Harina de arroz
-                <input type="radio" name="harina" id="avena" value="avena">Harina de avena               
-                <strong>INGREDIENTE HUMEDO origen animal</strong>
-                <input type="radio" name="humedo" id="huevo" value="huevo">Huevo
-                <strong>INGREDIENTE HUMEDO origen vegetal</strong>
-                <input type="radio" name="humedo" id="banana" value="banana">Banana
-                <input type="radio" name="humedo" id="chiaegg" value="chiaegg">Chiaegg
-                <input type="radio" name="humedo" id="garbanzo" value="garbanzo">Pasta de garbanzos
-                <strong>INGREDIENTE LIQUIDO origen animal</strong>
-                <input type="radio" name="liquido" id="vaca" value="vaca">Leche vacuna
-                <strong>INGREDIENTE LIQUIDO origen vegetal</strong>
-                <input type="radio" name="liquido" id="soja" value="soja">Leche de soja
-                <input type="radio" name="liquido" id="almendras" value="almendras">Leche de Almendras
-                <input type="radio" name="liquido" id="coco" value="coco">Leche de Coco
-                <strong>RELLENO TRADICIONAL</strong>
-                <input type="radio" name="relleno" id="mousse" value="mousse">Mousse
-                <input type="radio" name="relleno" id="ddl" value="ddl">Dulce de leche
-                <strong>RELLENO origen vegetal</strong>
-                <input type="radio" name="relleno" id="fruta" value="fruta">Fruta
-                <input type="radio" name="relleno" id="buttercream vegano" value="buttercream vegano">Buttercream vegano
-                <strong>COBERTURA TRADICIONAL</strong>
-                <input type="radio" name="cobertura" id="crema" value="crema">Crema
-                <input type="radio" name="cobertura" id="bcream" value="bcream">Buttercream
-                <strong>COBERTURA origen vegetal</strong>
-                <input type="radio" name="cobertura" id="bcreamveano" value="bcreamveano">Buttercream vegano
-                <input type="radio" name="cobertura" id="repostero" value="repostero">Baño de chocolate repostero
-                <strong>TOPPINGS</strong>
-                <input type="checkbox" name="toppings[]" id="sprinkles" value="sprinkles">Sprinkles
-                <input type="checkbox" name="toppings[]" id="frutas" value="frutas">Frutas de estación
-                <input type="checkbox" name="toppings[]" id="chips" value="chips">Chips de chocolate
-                </fieldset>
-                <button type="button" onclick="recolectarDatos()">LISTO!</button>
-        </form> 
-        
-    <!--Desafio DOM-->      
-    </div>
-    <h2>Querés saber más?</h2>
-    <div>
-        <ul id="cakeList"></ul>
-            <select id="selectCake"></select>
+            
+            <fieldset class="contenedorF">
+                <div>
+                    Filtrar ingredientes:
+                    <select name="filtro" onchange="filterIngredients()">
+                        <option value="none" selected>- mostrar todos -</option>
+                        <option value="isVegan">Vegan</option>
+                        <option value="sinGluten">Sin Gluten</option>
+                        <option value="sinLactosa">Sin lactosa</option>
+                    </select>
+                </div>
+                <div id="form">
+                </div>
+                
+                <button type="button" onclick="finish()" id="boton">Listo!</button>
+            </form>
+            <div id="result"></div>
         </div>
+        <h2>Querés saber más?</h2>
+        
+        <form>
+            <div>
+                <input type="button" id="botont" value="TRADICIONAL" class="botonJ"/>
+                <input type="button" id="botonv" value="VEGANO" class="botonJ"/>
+                <input type="button" id="botong" value="GLUTEN FREE" class="botonJ"/>
+                <input type="button" id="botonl" value="SIN LACTOSA" class="botonJ"/>
+            </div>
+            <div id="caja">Aqui se muestra la información sobre la categoría seleccionada</div>
+        </form>
         
         
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="archivoyen.js"></script>
+        
         
     </body>
     <footer class="footer">
